@@ -4,6 +4,7 @@
   --background-body-color: #fff;
   --primary-background-color: #e5e5e5;
   --secondary-background-color: #2f303a;
+
   --background-header-color: #fff;
   --background-banner-color: #C4C4C4;
   --backgruund-btn-filter-color: #f5f4fa;
@@ -12,8 +13,11 @@
   --background-team-color: #f5f4fa;
   --background-team-card-color: #fff;
   --background-clients-color: #AFB1B8;
+  --background-work-exampl-color: #fff;
   --bg-footer-socials-icon: rgba(255, 255, 255, 0.1);
   --bg-we-img-overlay-color: rgba(33, 150, 243, 0.9);
+  --bg-overlay-color: rgba(0, 0, 0, 0.2);
+
   --shadow-one-team-card-color: rgba(0, 0, 0, 0.12);
   --shadow-two-team-card-color: rgba(0, 0, 0, 0.14);
   --shadow-three-team-card-color: rgba(0, 0, 0, 0.2);
@@ -23,7 +27,7 @@
   --shadow-one-btn-filter-color: rgba(0, 0, 0, 0.1);
   --shadow-two-btn-filter-color: rgba(0, 0, 0, 0.08);
   --shadow-three-btn-filter-color: rgba(0, 0, 0, 0.12);
-  --background-work-exampl-color: #fff;
+
   --primary-logo-color: #000;
   --accent-color: #2196f3;
   --accent-text-background-color: #fff;
@@ -33,6 +37,8 @@
   --header-line-color: #ececec;
   --primary-icon-color: #AFB1B8;
   --secondary-icon-color: #fff;
+  --checkbox-icon-color: #000;
+
   --tduration: 250ms;
   --ttiming-function: (0.4, 0, 0.2, 1);
 }
@@ -141,7 +147,6 @@ body {
 .site-nav>.item {
   position: relative;
   display: flex;
-  overflow: hidden;
 }
 
 .site-nav .item+.item {
@@ -233,7 +238,7 @@ body {
 .info .link:focus,
 .info .link:hover {
   color: var(--accent-color);
-  transform: backgraund, color;
+  transform: backgraund-color, color;
 }
 
 /* ---------------------  БАННЕР  --------------------------*/
@@ -245,14 +250,13 @@ body {
   margin-right: auto;
   padding-top: 200px;
   padding-bottom: 200px;
-  text-align: center;
   background-color: var(--background-banner-color);
   background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4),
       rgba(47, 48, 58, 0.4)),
     url('../images/banner.jpg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
 }
 
 .banner-title {
@@ -264,6 +268,7 @@ body {
   font-size: 44px;
   line-height: 1.36;
   letter-spacing: 0.06em;
+  text-align: center;
   text-transform: uppercase;
   color: var(--accent-text-background-color);
 }
@@ -271,9 +276,13 @@ body {
 /* ---------------------  КНОПКА БАННЕРА  --------------------------*/
 
 .btn-header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 200px;
   height: 50px;
   padding: 0;
+
   font-family: inherit;
   font-weight: 700;
   font-size: 16px;
@@ -285,14 +294,14 @@ body {
   border-radius: 4px;
   border: none;
 
-  transition-property: transform, font-size;
+  transition-property: transform;
   transition-duration: var(--tduration);
   transition-timing-function: var(--ttiming-function);
 }
 
 .btn-header:focus,
 .btn-header:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /* ---------------------  МОДАЛЬНОЕ ОКНО  --------------------------*/
@@ -300,10 +309,12 @@ body {
 .backdrop {
   position: fixed;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+
+  z-index: 1;
+  background-color: var(--bg-overlay-color);
 
   opacity: 1;
   transition-property: opacity;
@@ -327,6 +338,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  display: flex;
+  flex-direction: column;
   padding: 40px;
   width: 528px;
   height: 581px;
@@ -343,13 +356,6 @@ body {
   transition-timing-function: var(--ttiming-function);
 }
 
-.modal-title {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1.15;
-  text-align: center;
-}
-
 .modal-btn-close {
   position: absolute;
   top: 8px;
@@ -363,9 +369,186 @@ body {
   background-color: var(--background-body-color);
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+
+  transition-property: fill;
+  transition-duration: var(--tduration);
+  transition-timing-function: var(--ttiming-function);
 }
 
-.modal-icon-close {}
+.modal-btn-close:focus,
+.modal-btn-close:hover {
+  fill: var(--accent-color);
+}
+
+.modal-title {
+  margin: 0 0 12px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.modal-box {}
+
+.modal-form {
+  display: block;
+}
+
+.form-field {
+  position: relative;
+  display: block;
+  margin-bottom: 10px;
+  color: var(--secondary-text-color);
+}
+
+.form-label {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+}
+
+.form-input {
+  width: 100%;
+  height: 40px;
+  padding-left: 40px;
+  font-size: 14px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  outline: none;
+
+  transition-property: border-color;
+  transition-duration: var(--tduration);
+  transition-timing-function: var(--ttiming-function);
+}
+
+.input-icon {
+  position: absolute;
+  bottom: 11px;
+  left: 12px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+
+  transition-property: fill;
+  transition-duration: var(--tduration);
+  transition-timing-function: var(--ttiming-function);
+}
+
+.form-input:focus,
+.form-input:hover,
+.form-field:focus .input-icon,
+.form-field:hover .input-icon,
+.form-field:focus-within .input-icon {
+  border-color: var(--accent-color);
+  fill: var(--accent-color);
+}
+
+.comments {
+  margin-bottom: 20px;
+}
+
+.comments-text {
+  padding: 12px 16px;
+  width: 100%;
+  height: 120px;
+  font-size: 14px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  /* color: rgba(117, 117, 117, 0.5); */
+  resize: none;
+}
+
+.consent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.form-icon-check {
+  display: inline-block;
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--checkbox-icon-color);
+  border-radius: 2px;
+
+  transition-property: background-color background-image;
+  transition-duration: var(--tduration);
+  transition-timing-function: var(--ttiming-function);
+}
+
+.checkbox:checked+.form-icon-check {
+  border-color: transparent;
+  background-color: var(--accent-color);
+  background-image: url('../images/check-mark.svg');
+  background-size: contain;
+  background-origin: border-box;
+}
+
+.form-checkbox-text {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+}
+
+.mailing-rules {
+  display: inline-block;
+  text-decoration: underline;
+  font-size: 14px;
+  line-height: 1.71;
+  color: var(--accent-color);
+}
+
+.btn-send {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: 50px;
+  padding: 0;
+
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  color: var(--accent-text-background-color);
+  background-color: var(--accent-color);
+  box-shadow: 0px 4px 4px var(--button-header-border-color);
+  border-radius: 4px;
+  border: none;
+
+  transition-property: transform;
+  transition-duration: var(--tduration);
+  transition-timing-function: var(--ttiming-function);
+}
+
+.btn-send:focus,
+.btn-send:hover {
+  transform: scale(1.05);
+}
 
 /* ---------------------  НАШИ ПРЕИМУЩЕСТВА  --------------------------*/
 
@@ -665,6 +848,7 @@ body {
 
 .footer-socials {
   margin-left: 70px;
+  margin-right: 93px;
   padding-top: 12px;
 }
 
@@ -672,7 +856,8 @@ body {
   justify-content: start;
 }
 
-.socials-title {
+.socials-title,
+.subscription-title {
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 14px;
@@ -700,6 +885,70 @@ body {
   background-color: var(--accent-color);
 }
 
+.subscription-form {
+  padding-top: 12px;
+}
+
+.subscription-form-field {
+  display: flex;
+}
+
+.subscription-mail-label {}
+
+.subscription-input {
+  width: 358px;
+  height: 50px;
+  padding: 15px 16px;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: var(--secondary-background-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+  outline: none;
+
+  transition-property: border-color;
+  transition-duration: var(--tduration);
+  transition-timing-function: var(--ttiming-function);
+}
+
+.subscription-input:focus,
+.subscription-input:hover {
+  border-color: var(--accent-color);
+}
+
+.subscription-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+  padding: 10px 28px;
+
+  width: 200px;
+  height: 50px;
+  font-weight: 700;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+
+  color: var(--accent-text-background-color);
+  background: var(--accent-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border: none;
+
+  transition-property: transform;
+  transition-duration: var(--tduration);
+  transition-timing-function: var(--ttiming-function);
+}
+
+.send-icon {
+  margin-left: 10px;
+  fill: var(--accent-text-background-color);
+}
+
+.subscription-btn:focus,
+.subscription-btn:hover {
+  transform: scale(1.05);
+}
 
 /* --------------------  ПОРТФОЛИО  --------------------------*/
 
@@ -727,7 +976,6 @@ body {
   border-radius: 4px;
   border: none;
   outline: none;
-  cursor: pointer;
 
   transition-property: background-color, box-shadow, color;
   transition-duration: var(--tduration);
