@@ -13,7 +13,7 @@
   <title>WebStudio-Студия</title>
 </head>
 
-<body>
+<body id="page">
   <!-- Шапка -->
   <header class="header">
     <div class="container">
@@ -58,7 +58,7 @@
             </button>
             <div class="modal-box">
               <p class="modal-title">Оставьте свои данные, мы вам перезвоним</p>
-              <form class="modal-form">
+              <form class="modal-form" autocomplete="off">
                 <label class="form-field">
                   <span class="form-label">Имя</span>
                   <input class="form-input" type="text" name="name">
@@ -88,14 +88,13 @@
                 </label>
                 <label class="form-field comments">
                   <span class="form-label">Комментарий</span>
-                  <textarea class="form-input comments-text" name="comments" rows="10"
-                    placeholder="Введите текст"></textarea>
+                  <textarea class="form-input comments-text" name="comments" placeholder="Введите текст"></textarea>
                 </label>
                 <label class="form-field consent">
                   <input class="checkbox" type="checkbox">
                   <span class="form-icon-check"></span>
                   <span class="form-checkbox-text">Соглашаюсь с рассылкой и принимаю
-                    <a class="mailing-rules" href=""> Условия договора</a></span>
+                    <a class="mailing-rules" href="#">Условия договора</a></span>
                 </label>
                 <button class="btn-send" type="submit">Отправить</button>
               </form>
@@ -162,23 +161,14 @@
       <div class="container">
         <h2 class="section-title">Чем мы занимаемся</h2>
         <ul class="type-work list">
-          <li class="type-work-item">
+          <li class="type-work-item" data-alt="Десктопные приложения">
             <img src="./images/img-1.jpg" alt="Десктопные приложения" width="370" height="294" />
-            <div class="type-work-img-overlay">
-              <p class="type-work-img-overlay-text">Десктопные приложения</p>
-            </div>
           </li>
-          <li class="type-work-item">
+          <li class="type-work-item" data-alt="Мобильные приложения">
             <img src="./images/img-2.jpg" alt="Мобильные приложения" width="370" height="294" />
-            <div class="type-work-img-overlay">
-              <p class="type-work-img-overlay-text">Мобильные приложения</p>
-            </div>
           </li>
-          <li class="type-work-item">
+          <li class="type-work-item" data-alt="Дизайнерские решения">
             <img src="./images/img-3.jpg" alt="Дизайнерские решения" width="370" height="294" />
-            <div class="type-work-img-overlay">
-              <p class="type-work-img-overlay-text">Дизайнерские решения</p>
-            </div>
           </li>
         </ul>
       </div>
@@ -443,7 +433,7 @@
           </li>
         </ul>
       </div>
-      <form class="subscription-form">
+      <form class="subscription-form" autocomplete="off">
         <h2 class="subscription-title">Подпишитесь на рассылку</h2>
         <div class="form-email">
           <div class="subscription-form-field">
